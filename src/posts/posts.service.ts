@@ -10,7 +10,7 @@ export class PostsService {
   constructor(
     @InjectRepository(Post)
     private postsRepository: Repository<Post>,
-  ) {}
+  ) { }
 
   create(createPostDto: CreatePostDto) {
     return 'This action adds a new post';
