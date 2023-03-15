@@ -8,4 +8,6 @@ export class Post {
   title: string;
   @Column()
   description: string;
+  @Column()
+  published: boolean;
 }

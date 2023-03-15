@@ -1,3 +1,4 @@
+import { UpdatePublishedPostDto } from './dto/update-status-post.dto';
 import {
   Controller,
   Get,
@@ -6,6 +7,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
@@ -17,6 +19,11 @@ import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
+  @Get()
+  findAll(@Query('published') published?: boolean) {
+    return this.postsService.findAll(published);
+  }
+
   @Post()
   @ApiOkResponse({
     status: 201,
@@ -24,11 +31,6 @@ export class PostsController {
   })
   create(@Body() createPostDto: CreatePostDto) {
     return this.postsService.create(createPostDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.postsService.findAll();
   }
 
   @Get(':id')
@@ -43,6 +45,17 @@ export class PostsController {
   })
   update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
     return this.postsService.update(+id, updatePostDto);
+  }
+  @Patch('published/:id')
+  @ApiOkResponse({
+    status: 201,
+    type: CreatePostDto,
+  })
+  updateStatus(
+    @Param('id') id: string,
+    @Body() payload: UpdatePublishedPostDto,
+  ) {
+    return this.postsService.update(+id, payload);
   }
 
   @Delete(':id')

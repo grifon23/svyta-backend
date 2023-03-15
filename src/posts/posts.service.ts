@@ -16,8 +16,8 @@ export class PostsService {
     return await this.postsRepository.save(createPostDto);
   }
 
-  async findAll(): Promise<Post[]> {
-    return await this.postsRepository.find();
+  async findAll(payload?: boolean): Promise<Post[]> {
+    return await this.postsRepository.find({ where: { published: payload } });
   }
 
   async findOne(id: number) {
@@ -29,6 +29,14 @@ export class PostsService {
     post = this.postsRepository.merge(post, updatePostDto);
 
     await this.postsRepository.update(id, updatePostDto);
+    return post;
+  }
+
+  async updatePublished(id: number, payload: boolean) {
+    let post = await this.postsRepository.findOne({ where: { id } });
+    post = this.postsRepository.merge(post, { published: payload });
+
+    await this.postsRepository.update(id, { published: payload });
     return post;
   }
 
