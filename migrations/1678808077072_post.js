@@ -2,14 +2,13 @@
 
 exports.shorthands = undefined;
 
-exports.up = pgm => {
-
-    pgm.createTable('posts', {
+exports.up = (pgm) => {
+    pgm.createTable('post', {
         id: 'id',
-        titles: { type: 'varchar(1000)', notNull: true },
-
-    })
+        title: { type: 'varchar(30)', notNull: true },
+    });
 };
 
-exports.down = pgm => {
+exports.down = (pgm) => {
+    pgm.dropTable('post');
 };
