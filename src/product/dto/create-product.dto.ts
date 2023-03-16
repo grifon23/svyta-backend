@@ -1,9 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreatePostDto {
+export class CreateProductDto {
   @ApiProperty()
-  title: string;
+  name: string;
 
+  @ApiProperty({ required: true })
+  price: string;
+
+  @ApiProperty({ required: true })
+  size: string;
   @ApiProperty({ required: true })
   description?: string;
 

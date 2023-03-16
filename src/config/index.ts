@@ -1,5 +1,5 @@
-import { Post } from 'src/posts/entities/post.entity';
 import { config } from 'dotenv';
+import { Product } from 'src/product/entities/product.entity';
 import { DataSourceOptions } from 'typeorm';
 
 config();
@@ -10,7 +10,7 @@ export const typeOrmConfig: DataSourceOptions = {
   username: process.env.POSTGRES_USER,
   password: String(process.env.POSTGRES_PASSWORD),
   database: process.env.DATABASE_NAME,
-  entities: [Post],
+  entities: [Product],
   migrationsRun: false,
   logging: true,
   migrationsTableName: 'migrations',

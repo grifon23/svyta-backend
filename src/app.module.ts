@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { PostsModule } from './posts/posts.module';
+import { ProductModule } from './product/product.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config';
 import { ConfigModule } from '@nestjs/config';
@@ -14,7 +14,7 @@ import { ConfigModule } from '@nestjs/config';
       ...typeOrmConfig,
       autoLoadEntities: true,
     }),
-    PostsModule,
+    ProductModule,
   ],
 })
 export class AppModule {}

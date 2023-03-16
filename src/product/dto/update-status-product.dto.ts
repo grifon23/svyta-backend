@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class UpdatePublishedPostDto {
+export class UpdatePublishedProductDto {
   @ApiProperty({ required: true, nullable: false })
   published: boolean;
 }

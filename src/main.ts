@@ -4,12 +4,14 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  app.enableCors({
+    origin: '*',
+  });
   const config = new DocumentBuilder()
-    .setTitle('Posts')
-    .setDescription('The posts API')
+    .setTitle('Svyta corp.')
+    .setDescription('The Svyta API')
     .setVersion('1.0')
-    .addTag('Posts')
+    .addTag('Products')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
