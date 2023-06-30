@@ -3,6 +3,8 @@ import { PostsModule } from './posts/posts.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config';
 import { ConfigModule } from '@nestjs/config';
+import { StorageModule } from './storage/storage.module';
+import { ImageUploadModule } from './image-upload/image-upload.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { ConfigModule } from '@nestjs/config';
       autoLoadEntities: true,
     }),
     PostsModule,
+    StorageModule,
+    ImageUploadModule
   ],
 })
 export class AppModule {}

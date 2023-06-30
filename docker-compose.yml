@@ -13,5 +13,21 @@ services:
     volumes:
       - dbdata:/var/lib/postgresql/data
 
+  test-minio:
+        hostname: localhost
+        image: minio/minio:RELEASE.2021-09-18T18-09-59Z
+        container_name: test-minio
+
+        volumes:
+          - './test/data/:/data'
+          - './test/config:/root/.minio'
+        ports:
+            
+          - 5803:9000
+          - 5804:9001
+        environment:
+          MINIO_ROOT_USER: ${MINIO_ACCESS_KEY}
+          MINIO_ROOT_PASSWORD: ${MINIO_SECRET_KEY}
+        command: server --console-address ":9001"  /data
 volumes:
   dbdata:

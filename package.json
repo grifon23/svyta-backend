@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
-    "@nestjs/config": "^2.3.1",
+    "@nestjs/config": "^2.3.4",
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
@@ -31,6 +31,8 @@
     "config": "^3.3.9",
     "dotenv": "^16.0.3",
     "env": "^0.0.2",
+    "minio": "^7.1.1",
+    "nestjs-minio-client": "^2.0.0",
     "node-pg-migrate": "^6.2.2",
     "pg": "^8.10.0",
     "reflect-metadata": "^0.1.13",
